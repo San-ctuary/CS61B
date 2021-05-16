@@ -76,6 +76,8 @@ public class Planet{
         double py = this.yyPos + dt * vy;
         this.xxPos = px;
         this.yyPos = py;
+        this.xxVel = vx;
+        this.yyVel = vy;
     }
     
     public static void main(String[] args) {
