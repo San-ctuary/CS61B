@@ -7,7 +7,7 @@ public class Planet{
     public String imgFileName;
 
 
-    public static final double G = 6.67e-11;
+    private static final double G = 6.67e-11;
     public Planet(double xP, double yP, double xV,double yV, double m, String img){
         this.xxPos = xP;
         this.yyPos = yP;
@@ -85,9 +85,5 @@ public class Planet{
         StdDraw.picture(this.xxPos, this.yyPos, this.imgFileName);
     }
 
-    public static void main(String[] args) {
-        Planet p1 = new Planet(1e12,2e11,0,0,2e30,"p1");
-        Planet p2 = new Planet(2.3e12,9.5e11,0,0,6e26,"p2");
-        System.out.println(p1.calcForceExertedBy(p2));
-    }
+    
 }
