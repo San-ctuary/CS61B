@@ -80,6 +80,11 @@ public class Planet{
         this.yyVel = vy;
     }
     
+
+    public void draw() {
+        StdDraw.picture(this.xxPos, this.yyPos, this.imgFileName);
+    }
+
     public static void main(String[] args) {
         Planet p1 = new Planet(1e12,2e11,0,0,2e30,"p1");
         Planet p2 = new Planet(2.3e12,9.5e11,0,0,6e26,"p2");
