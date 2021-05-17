@@ -33,8 +33,9 @@ public class NBody{
         StdDraw.setScale(-radius,radius);
         StdDraw.picture(0, 0, "images/starfield.jpg");
         for(Planet planet : planets){
-            planet.imgFileName = "images/" + planet.imgFileName;
-            planet.draw();
+            Planet p = new Planet(planet);
+            p.imgFileName = "images/" + planet.imgFileName;
+            p.draw();
         }
         StdDraw.enableDoubleBuffering();
         double time = 0;
@@ -55,7 +56,9 @@ public class NBody{
             }
             StdDraw.picture(0, 0, "images/starfield.jpg");
             for(Planet planet : planets){
-                planet.draw();
+                Planet p = new Planet(planet);
+                p.imgFileName = "images/" + planet.imgFileName;
+                p.draw();
             }
             StdDraw.show();
             StdDraw.pause(10);
