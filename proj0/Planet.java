@@ -38,11 +38,11 @@ public class Planet{
     }
 
     public double calcForceExertedByX(Planet p) {
-        return calcForceExertedBy(p) * Math.abs(this.xxPos - p.xxPos) /  calcDistance(p);
+        return calcForceExertedBy(p) * (- this.xxPos + p.xxPos) /  calcDistance(p);
     }
 
     public double calcForceExertedByY(Planet p) {
-        return calcForceExertedBy(p) * Math.abs(this.yyPos - p.yyPos) /  calcDistance(p);
+        return calcForceExertedBy(p) * (- this.yyPos + p.yyPos) /  calcDistance(p);
     }
 
 
