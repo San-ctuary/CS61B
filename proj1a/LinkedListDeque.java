@@ -65,9 +65,10 @@ public class LinkedListDeque<T> {
         T t = null;
         if(this.isEmpty())
             return t;
-        t = this.sentF.next.item;
-        this.sentF.next = this.sentF.next.next;
-        return t;
+        TNode tnode = this.sentF.next;
+        this.sentF.next = tnode.next;
+        tnode.next.prev = this.sentF;
+        return tnode.item;
     }
 
     /* Removes and returns the item at the back of the deque. 
@@ -76,9 +77,10 @@ public class LinkedListDeque<T> {
         T t = null;
         if(this.isEmpty())
             return t;
-        t = this.sentB.prev.item;
-        this.sentB.prev = this.sentB.prev.prev;
-        return t;
+        TNode tnode = this.sentB.prev;
+        this.sentB.prev = tnode.prev;
+        tnode.prev.next = this.sentB;
+        return tnode.item;
     }
 
     /*Gets the item at the given index, where 0 is the front, 1 is the next item, and so forth. 
@@ -95,8 +97,15 @@ public class LinkedListDeque<T> {
         return p.next.item;
     }
 
+
+    private T getTNode(TNode t,int index) {
+        if(index == 0)
+            return t.next.item;
+        return getTNode(t.next,index - 1);
+    }
+
     public T getRecursive(int index) {
-        return null;
+        return getTNode(this.sentF,index);
     }
 
 
@@ -107,11 +116,8 @@ public class LinkedListDeque<T> {
         L.addFirst(3);
         System.out.println(L.size());
         L.printDeque();
-        System.out.println("-------------");
+        System.out.println(L.getRecursive(2));
 
-        // L.removeFirst();
-        L.removeLast();
-        L.printDeque();
+        
     }
-
 }
