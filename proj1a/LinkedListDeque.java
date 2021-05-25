@@ -1,11 +1,11 @@
 public class LinkedListDeque<T> {
 
     public class TNode {
-        public T item;
-        public TNode prev;
-        public TNode next;
+        private T item;
+        private TNode prev;
+        private TNode next;
 
-        public TNode(T t,TNode prev,TNode next){
+        public TNode(T t, TNode prev, TNode next) {
             this.item = t;
             this.prev = prev;
             this.next = next;
@@ -16,7 +16,7 @@ public class LinkedListDeque<T> {
     private TNode sentF = new TNode(null, null, null);
     private TNode sentB = new TNode(null, null, null);
 
-    public LinkedListDeque(){
+    public LinkedListDeque() {
         this.size = 0;
         this.sentF.next = this.sentB;
         this.sentB.prev = this.sentF;
@@ -39,10 +39,12 @@ public class LinkedListDeque<T> {
 
     /*Returns true if deque is empty, false otherwise*/
     public boolean isEmpty() {
-        if(this.size() == 0)
+        if (this.size() == 0) {
             return true;
-        else    
+        }
+        else {
             return false;
+        }   
     }
 
     /*Returns the number of items in the deque*/
@@ -53,7 +55,7 @@ public class LinkedListDeque<T> {
     /*Prints the items in the deque from first to last, separated by a space*/
     public void printDeque() {
         TNode p = this.sentF;
-        while(p.next != this.sentB){
+        while (p.next != this.sentB) {
             System.out.print(p.next.item + " ");
             p = p.next;
         }
@@ -63,8 +65,9 @@ public class LinkedListDeque<T> {
     If no such item exists, returns null*/
     public T removeFirst() {
         T t = null;
-        if(this.isEmpty())
+        if (this.isEmpty()){
             return t;
+        }
         TNode tnode = this.sentF.next;
         this.sentF.next = tnode.next;
         tnode.next.prev = this.sentF;
@@ -76,8 +79,9 @@ public class LinkedListDeque<T> {
     If no such item exists, returns null*/
     public T removeLast() {
         T t = null;
-        if(this.isEmpty())
+        if(this.isEmpty()) {
             return t;
+        }
         TNode tnode = this.sentB.prev;
         this.sentB.prev = tnode.prev;
         tnode.prev.next = this.sentB;
@@ -89,10 +93,11 @@ public class LinkedListDeque<T> {
     If no such item exists, returns null. Must not alter the deque */
     public T get(int index) {
         TNode p = this.sentF;
-        if(index >= this.size())
+        if(index >= this.size()) {
             return null;
+        }
         int count = 0;
-        while(count != index){
+        while(count != index) {
             p = p.next;
             count += 1;
         }
@@ -101,8 +106,9 @@ public class LinkedListDeque<T> {
 
 
     private T getTNode(TNode t,int index) {
-        if(index == 0)
+        if(index == 0) {
             return t.next.item;
+        }
         return getTNode(t.next,index - 1);
     }
 
