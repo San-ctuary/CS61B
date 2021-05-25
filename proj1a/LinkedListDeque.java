@@ -23,7 +23,7 @@ public class LinkedListDeque<T> {
     }
     /*Adds an item of type T to the front of the deque8*/
     public void addFirst(T item) {
-        TNode tnode = new TNode(item, this.sentF,this.sentF.next);
+        TNode tnode = new TNode(item, this.sentF, this.sentF.next);
         this.sentF.next.prev = tnode;
         this.sentF.next = tnode;
         this.size += 1;
@@ -41,8 +41,7 @@ public class LinkedListDeque<T> {
     public boolean isEmpty() {
         if (this.size() == 0) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }   
     }
@@ -65,7 +64,7 @@ public class LinkedListDeque<T> {
     If no such item exists, returns null*/
     public T removeFirst() {
         T t = null;
-        if (this.isEmpty()){
+        if (this.isEmpty()) {
             return t;
         }
         TNode tnode = this.sentF.next;
@@ -79,7 +78,7 @@ public class LinkedListDeque<T> {
     If no such item exists, returns null*/
     public T removeLast() {
         T t = null;
-        if(this.isEmpty()) {
+        if (this.isEmpty()) {
             return t;
         }
         TNode tnode = this.sentB.prev;
@@ -93,11 +92,11 @@ public class LinkedListDeque<T> {
     If no such item exists, returns null. Must not alter the deque */
     public T get(int index) {
         TNode p = this.sentF;
-        if(index >= this.size()) {
+        if (index >= this.size()) {
             return null;
         }
         int count = 0;
-        while(count != index) {
+        while (count != index) {
             p = p.next;
             count += 1;
         }
@@ -105,23 +104,22 @@ public class LinkedListDeque<T> {
     }
 
 
-    private T getTNode(TNode t,int index) {
-        if(index == 0) {
+    private T getTNode(TNode t, int index) {
+        if (index == 0) {
             return t.next.item;
         }
-        return getTNode(t.next,index - 1);
+        return getTNode(t.next, index - 1);
     }
 
     public T getRecursive(int index) {
-        return getTNode(this.sentF,index);
+        return getTNode(this.sentF, index);
     }
 
 
     public static void main(String[] args) {
         LinkedListDeque<Integer> L =  new LinkedListDeque<>();
         L.addFirst(10);
-        L.removeFirst();
-        System.out.println(L.isEmpty());
+        L.addFirst(20);
         L.printDeque();
 
         
