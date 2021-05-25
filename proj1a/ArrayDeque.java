@@ -80,8 +80,9 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst() {
-        if(isEmpty)
+        if (isEmpty()) {
             return null;
+        }
         nextFirst = (nextFirst + 1) % this.items.length;
         T t = (T) this.items[nextFirst];
         resizeRemove();
@@ -89,8 +90,9 @@ public class ArrayDeque<T> {
     }
 
     public T removeLast() {
-        if(isEmpty)
+        if (isEmpty()) {
             return null;
+        }
         nextLast = (nextLast - 1 + this.items.length) % this.items.length;
         T t = (T) this.items[nextLast];
         resizeRemove();
