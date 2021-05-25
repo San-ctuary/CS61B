@@ -5,7 +5,7 @@ public class ArrayDeque<T> {
     private int nextLast;
     private Object[] items;
     private static final double HIGHFACTOR = 0.75;
-    private static final double lOWFACTOR = 0.25;
+    private static final double LOWFACTOR = 0.25;
 
 
     public ArrayDeque() {
@@ -19,7 +19,7 @@ public class ArrayDeque<T> {
             Object[] temp = new Object[this.items.length * 2];
             int pos = this.nextFirst;
             int i;
-            for (i = 0; i < this.size(); i++){
+            for (i = 0; i < this.size(); i++) {
                 pos = (pos + 1) % this.items.length;
                 temp[i] = this.items[pos];
             }
@@ -30,7 +30,7 @@ public class ArrayDeque<T> {
     }
     
     private void resizeRemove() {
-        if (this.items.length > 8 && this.size() <= this.items.length * lOWFACTOR) {
+        if (this.items.length > 8 && this.size() <= this.items.length * LOWFACTOR) {
             Object[] temp = new Object[this.items.length / 2];
             int pos = this.nextFirst;
             int i;
@@ -105,7 +105,7 @@ public class ArrayDeque<T> {
         }
         int pos = this.nextFirst;
         int i;
-        for (i = 0; i <= index; i++){
+        for (i = 0; i <= index; i++) {
             pos = (pos + 1) % this.items.length;
         }
         return (T) items[pos];
