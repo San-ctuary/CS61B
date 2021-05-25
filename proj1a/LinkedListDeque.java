@@ -1,6 +1,6 @@
 public class LinkedListDeque<T> {
 
-    public class TNode {
+    private class TNode {
         private T item;
         private TNode prev;
         private TNode next;
@@ -115,13 +115,5 @@ public class LinkedListDeque<T> {
         return getTNode(this.sentF, index);
     }
 
-
-    public static void main(String[] args) {
-        LinkedListDeque<Integer> L =  new LinkedListDeque<>();
-        L.addFirst(10);
-        L.addFirst(20);
-        L.printDeque();
-
-        
-    }
 }
+

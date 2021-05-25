@@ -14,12 +14,12 @@ public class ArrayDeque<T> {
         nextLast = 5;
     }
 
-    private void resizeAdd(){
+    private void resizeAdd() {
         if (this.size() > this.items.length * HIGHFACTOR) {
             Object[] temp = new Object[this.items.length * 2];
             int pos = this.nextFirst;
             int i;
-            for(i = 0;i < this.size();i++){
+            for (i = 0; i < this.size(); i++){
                 pos = (pos + 1) % this.items.length;
                 temp[i] = this.items[pos];
             }
@@ -29,12 +29,12 @@ public class ArrayDeque<T> {
         }
     }
     
-    private void resizeRemove(){
+    private void resizeRemove() {
         if (this.items.length > 8 && this.size() <= this.items.length * lOWFACTOR) {
             Object[] temp = new Object[this.items.length / 2];
             int pos = this.nextFirst;
             int i;
-            for (i = 0;i < this.size();i++){
+            for (i = 0; i < this.size(); i++) {
                 pos = (pos + 1) % this.items.length;
                 temp[i] = this.items[pos];
             }
@@ -73,22 +73,26 @@ public class ArrayDeque<T> {
 
     public void printDeque() {
         int pos = this.nextFirst;
-        for (int i = 0;i < this.size();i++) {
+        for (int i = 0; i < this.size(); i++) {
             pos = (pos + 1) % this.items.length;
             System.out.print(this.items[pos] + " ");
         }
     }
 
     public T removeFirst() {
+        if(isEmpty)
+            return null;
         nextFirst = (nextFirst + 1) % this.items.length;
-        T t = (T)this.items[nextFirst];
+        T t = (T) this.items[nextFirst];
         resizeRemove();
         return t;
     }
 
     public T removeLast() {
+        if(isEmpty)
+            return null;
         nextLast = (nextLast - 1 + this.items.length) % this.items.length;
-        T t = (T)this.items[nextLast];
+        T t = (T) this.items[nextLast];
         resizeRemove();
         return t;
     }
@@ -99,10 +103,10 @@ public class ArrayDeque<T> {
         }
         int pos = this.nextFirst;
         int i;
-        for (i = 0;i <= index;i++){
+        for (i = 0; i <= index; i++){
             pos = (pos + 1) % this.items.length;
         }
-        return (T)items[pos];
+        return (T) items[pos];
     }
 
     // public static void main(String[] args) {
