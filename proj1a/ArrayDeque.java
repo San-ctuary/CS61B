@@ -8,7 +8,7 @@ public class ArrayDeque<T> {
     private static final int INIT_CAPACITY = 8;
 
     public ArrayDeque() {
-        items = (T[])new Object[INIT_CAPACITY];
+        items = (T[]) new Object[INIT_CAPACITY];
         nextFirst = 0;
         nextLast = 1;
         size = 0;
@@ -21,7 +21,7 @@ public class ArrayDeque<T> {
      * @param cpapcity
      */
     private void resizeHelper(int cpapcity) {
-        T[] temp = (T[])new Object[cpapcity];
+        T[] temp = (T[]) new Object[cpapcity];
         int pos = this.nextFirst;
         int i;
         for (i = 0; i < this.size(); i++) {
@@ -120,43 +120,13 @@ public class ArrayDeque<T> {
         return items[pos];
     }
 
-    public static void main(String[] args) {
-        ArrayDeque<Integer> ad = new ArrayDeque<>();
-        System.out.println(ad.size());
-        ad.addFirst(1);
-        ad.addLast(20);
-        ad.addFirst(2);
+    // public static void main(String[] args) {
+    //     ArrayDeque<Integer> ad = new ArrayDeque<>();
+    //     System.out.println(ad.size());
+    //     ad.addFirst(1);
+    //     ad.addLast(20);
+    //     ad.addFirst(2);
         
-        ad.addFirst(3);
-        
-        ad.addFirst(4);
-        
-        ad.addFirst(5);
-        
-        ad.addFirst(6);
-        ad.addFirst(7);
-        
-        
-        ad.addFirst(8);
-        ad.addFirst(9);
-        // ad.addFirst(10);
-        // ad.addLast(333);
-        System.out.println("output");
-        ad.printDeque();
-        System.out.println(ad.size());
-        // System.out.println(ad.removeLast());
-        System.out.println(ad.get(4));
-        // System.out.println(ad.items.length);
-        ad.removeFirst();
-        ad.removeFirst();
-        ad.removeFirst();
-        ad.removeFirst();
-        ad.removeFirst();
-        ad.removeFirst();
-        ad.removeFirst();
-        ad.removeFirst();
-        // ad.removeLast();
-        // System.out.println();
-        System.out.println(ad.size());
-    }
+    //     ad.addFirst(3);
+    // }
 }
