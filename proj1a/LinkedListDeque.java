@@ -21,6 +21,7 @@ public class LinkedListDeque<T> {
         this.sentF.next = this.sentB;
         this.sentB.prev = this.sentF;
     }
+    
     /*Adds an item of type T to the front of the deque8*/
     public void addFirst(T item) {
         TNode tnode = new TNode(item, this.sentF, this.sentF.next);
