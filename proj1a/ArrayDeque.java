@@ -50,7 +50,7 @@ public class ArrayDeque<T> {
      */
     private void resizeRemove() {
         if (this.items.length > 8 && this.size() <= this.items.length * LOWFACTOR) {
-            resizeHelper(this.items.length * 2);
+            resizeHelper(this.items.length / 2);
         }
     }
 
