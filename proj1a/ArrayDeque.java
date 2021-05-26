@@ -15,9 +15,10 @@ public class ArrayDeque<T> {
     }
 
     /**
-     * 将原数组中的元素重新放置在新数组中，原数组第一个元素放置在下标为0的位置
-     * nextFirst下标为items.length - 1
-     * nextLast下标为元素组的大小
+     * Replaces the elements of the original array in the new array, 
+     * with the first element of the original array placed at the subscript 0
+     * nextFirst subscript is items.length - 1
+     * nextLast  subscript is the length of items
      * @param cpapcity
      */
     private void resizeHelper(int cpapcity) {
@@ -34,7 +35,8 @@ public class ArrayDeque<T> {
     }
 
     /**
-     * 当数组放置的元素超过了数组长度 * 最大装载因子，将数组长度扩大一倍
+     * when the number of element exceed items.length * HIGHFACTOR
+     * double the size of items
      */
     private void resizeAdd() {
         if (this.size() > this.items.length * HIGHFACTOR) {
@@ -43,8 +45,8 @@ public class ArrayDeque<T> {
     }
     
     /**
-     * 当数组放置的元素小于了数组长度 * 最小装载因子，将数组缩小一倍
-     * 保证数组的大小最少为8
+     * when the number of element less tha items.length * HIGHFACTOR
+     * cut the size of items in half
      */
     private void resizeRemove() {
         if (this.items.length > 8 && this.size() <= this.items.length * LOWFACTOR) {
@@ -54,7 +56,7 @@ public class ArrayDeque<T> {
 
     public void addFirst(T item) {
         this.items[nextFirst] = item;
-        // 计算nextFirst的下一位置
+        // caculate the next postion of nextFirst
         nextFirst = (nextFirst - 1 + this.items.length) % this.items.length;
         size++;
         resizeAdd();
@@ -62,7 +64,7 @@ public class ArrayDeque<T> {
 
     public void addLast(T item) {
         this.items[nextLast] = item;
-        // 计算nextLast的下一位置
+        // caculate the next postion of nextLast
         nextLast = (nextLast + 1) % this.items.length;
         size++;
         resizeAdd();
@@ -88,7 +90,7 @@ public class ArrayDeque<T> {
         if (isEmpty()) {
             return null;
         }
-        // 计算移除后nextFirst的位置
+        // caculate the next postion of nextFirst when remove first element
         nextFirst = (nextFirst + 1) % this.items.length;
         T t = this.items[nextFirst];
         size--;
@@ -100,7 +102,7 @@ public class ArrayDeque<T> {
         if (isEmpty()) {
             return null;
         }
-        // 计算移除后nextLast的位置
+        // caculate the next postion of nextFirst when remove last element
         nextLast = (nextLast - 1 + this.items.length) % this.items.length;
         T t = this.items[nextLast];
         size--;
